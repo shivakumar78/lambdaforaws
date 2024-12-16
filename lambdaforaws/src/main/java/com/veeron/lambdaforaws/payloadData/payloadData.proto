@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+
+import "google/protobuf/timestamp.proto";
+
+message GPS {
+    double latitude = 1;
+    double longitude = 2;
+    float altitude = 3;
+}
+
+message VehicleData {
+    string device_no = 1;
+     google.protobuf.Timestamp timestamp = 2; 
+    GPS gps = 3;
+    optional float battery_voltage = 4;
+    optional float battery_current = 5;
+    optional float vehicle_speed = 6;
+    
+    enum Gear {
+        PARKING = 0;
+        DRIVE_MEDIUM = 1;
+        DRIVE_LOW = 2;
+        DRIVE_HIGH = 3;
+        REVERSE = 4;
+    }
+    
+    optional Gear gear = 7;
+}
